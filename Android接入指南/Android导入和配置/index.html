@@ -823,17 +823,16 @@ dependencies {
 &lt;/application&gt;
 </code></pre>
 <p>5.在build.gradle文件内添加如下配置：</p>
-<pre><code>sourceSets{
-        main {
-            jniLibs.srcDirs = ['libs','aar']
-        }
+<pre><code>
+ repositories {
+        maven { url 'https://jitpack.io' }
     }
 </code></pre>
 <p>6.添加如下配置到build.gradle的dependencies内：</p>
-<pre><code>implementation files(&quot;libs/adflowads-release.aar&quot;)
+<pre><code>implementation("com.github.adflowsdk:adflowtp:adflowtp-sdk")
+  implementation("com.google.android.gms:play-services-ads-lite:24.0.0")
 implementation(&quot;com.squareup.okhttp3:okhttp:4.12.0&quot;)
 </code></pre>
-<p>7.将我们的aar包添加到项目目录的app/libs文件夹内，如不存在该文件夹则需要新建libs文件夹</p>
 
 
 
