@@ -791,8 +791,7 @@
     if (!getPackageName().equals(processName)) {
         WebView.setDataDirectorySuffix(processName);
     }
-}
-ATSDK.setNetworkLogDebug(true);
+} 
 ATSDK.integrationChecking(getApplicationContext());
         ATSDK.setPersonalizedAdStatus(ATAdConst.PRIVACY.PERSIONALIZED_ALLOW_STATUS);
 ATSDK.init(this, appid, appkey);
