@@ -798,10 +798,18 @@ ATSDK.integrationChecking(getApplicationContext());
 ATSDK.init(this, appid, appkey);
 </code></pre>
 <p>2.在需要展示插屏广告和激励广告的Activity内添加返回按键处理，代码如下:</p>
-<pre><code>@Override
+<pre><code>
+  private void sendCustomBroadcast(){
+        Intent intersitialback = new Intent("com.adflow.adflowsdk.interstitial.back");
+        sendBroadcast(intersitialback);
+        Intent rewardback = new Intent("com.adflow.adflowsdk.reward.back");
+        sendBroadcast(rewardback);
+    }
+  @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK){
             if(mShowing){
+  sendCustomBroadcast();
                 return true;
             }
         }
