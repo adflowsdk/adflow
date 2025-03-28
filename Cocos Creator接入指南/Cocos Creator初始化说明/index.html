@@ -850,6 +850,7 @@ ATJSSDK.getUserLocation(function (userLocation) {
     onKeyDown(event) {
         if (event.keyCode === cc.macro.KEY.back) {
 if(mShowing){
+      //此处需要添加发送广播的行为，广播的action分别为："com.adflow.adflowsdk.interstitial.back"，"com.adflow.adflowsdk.reward.back"
                 event.preventDefault(); // 阻止默认行为
             }
 
