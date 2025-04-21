@@ -792,8 +792,14 @@
         WebView.setDataDirectorySuffix(processName);
     }
 } 
+//如果要支持多渠道的话需要添加以下代码
+Map<String, String> customMap = new HashMap<>();
+customMap.put("channel","1808");//渠道，如果不需要区分渠道则可不添加
+customMap.put("sub_channel","101");//子渠道，如果不需要区分渠道则可不添加
+ATSDK.initCustomMap(Collections.unmodifiableMap(customMap));//渠道，如果不需要区分渠道则可不添加
+//以下代码需要添加
 ATSDK.integrationChecking(getApplicationContext());
-        ATSDK.setPersonalizedAdStatus(ATAdConst.PRIVACY.PERSIONALIZED_ALLOW_STATUS);
+ATSDK.setPersonalizedAdStatus(ATAdConst.PRIVACY.PERSIONALIZED_ALLOW_STATUS);
 ATSDK.init(this, appid, appkey);
 </code></pre>
 <p>2.在需要展示插屏广告和激励广告的Activity内添加返回按键处理，代码如下:</p>
