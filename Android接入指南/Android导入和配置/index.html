@@ -816,7 +816,7 @@ dependencies {
  &lt;!-- Android 9以上适配 --&gt;
  &lt;uses-library android:name=&quot;org.apache.http.legacy&quot; android:required=&quot;false&quot;/&gt;
 
- &lt;!-- 如果有集成Admob SDK，则需要添加以下配置，value的值是Admob后台创建的应用的ID --&gt;
+ &lt;!-- 需要添加以下配置，不然程序会崩溃.如果原来有的则不需要另外添加.value的值是Admob后台创建的应用的ID --&gt;
   &lt;meta-data android:name=&quot;com.google.android.gms.ads.APPLICATION_ID&quot; 
                     android:value=&quot;ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy&quot;/&gt;
 
