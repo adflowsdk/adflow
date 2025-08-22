@@ -806,8 +806,10 @@ ATSDK.init(this, appid, appkey);
 <pre><code>
   private void sendCustomBroadcast(){
         Intent intersitialback = new Intent("com.adflow.adflowsdk.interstitial.back");
+        intersitialback.setPackage(getPackageName());//一定要加，否则sdk收不到返回按键，用户则在页面内无法后退到首页
         sendBroadcast(intersitialback);
         Intent rewardback = new Intent("com.adflow.adflowsdk.reward.back");
+        rewardback.setPackage(getPackageName());////一定要加，否则sdk收不到返回按键，用户则在页面内无法后退到首页
         sendBroadcast(rewardback);
     }
   @Override
