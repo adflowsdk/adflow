@@ -857,16 +857,7 @@
    }</code></p>
 <p>在展示广告之前，建议先调用<code>mRewardVideoAd.isAdReady()</code>，值为<strong>true</strong>则展示广告，值为<strong>false</strong>则实时加载等待加载成功后再展示广告</p>
 <p>5.记得在该场景的activity内监控返回按键，并在广告显示时屏蔽返回按键</p>
-<p><code>@Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK){
-            if(mShowing){
-                return true;
-            }
-        }
-        return super.onKeyDown(keyCode, event);
-    }</code></p>
-<p>此处的mShowing是判断当前正在展示广告，展示广告期间，屏蔽返回按键，避免返回操作直接关闭当前正在展示的广告。可以在onInterstitialAdShow/onRewardedVideoAdPlayStart接口内设置mShowing为true，在onInterstitialAdClose/onRewardedVideoAdClosed接口内设置mShowing为false</p>
+<p><p>返回按键的处理参照本文档初始化说明里面返回按键处理</p></p>
 
 
 
