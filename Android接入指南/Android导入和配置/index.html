@@ -798,16 +798,12 @@
 }
 dependencies {
     //Anythink (Necessary)
-    api &quot;com.anythink.sdk:core-tpn:6.4.27&quot;
-    api &quot;com.anythink.sdk:nativead-tpn:6.4.27&quot;
-    api &quot;com.anythink.sdk:banner-tpn:6.4.27&quot;
-    api &quot;com.anythink.sdk:interstitial-tpn:6.4.27&quot;
-    api &quot;com.anythink.sdk:rewardedvideo-tpn:6.4.27&quot;
-    api &quot;com.anythink.sdk:splash-tpn:6.4.27&quot;
-
-    //Androidx (Necessary)
-    api &quot;androidx.appcompat:appcompat:1.1.0&quot;
-    api &quot;androidx.browser:browser:1.4.0&quot;
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.browser:browser:1.4.0"
+    implementation "com.anythink.sdk:core-tpn:6.4.87"
+    implementation "com.anythink.sdk:interstitial-tpn:6.4.87"
+    implementation "com.anythink.sdk:rewardedvideo-tpn:6.4.87"
+    
 
 }
 </code></pre>
@@ -819,7 +815,7 @@ dependencies {
     }
 </code></pre>
 <p>5.添加如下配置到build.gradle的dependencies内：</p>
-<pre><code>implementation("com.github.adflowsdk:adflowtp:2.2.7")
+<pre><code>implementation("com.github.adflowsdk:adflowtp:2.2.8")
   implementation ("com.google.android.gms:play-services-ads-api:24.5.0")
 </code></pre>
 
