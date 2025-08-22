@@ -811,29 +811,16 @@ dependencies {
 
 }
 </code></pre>
-<p>4.修改AndroidManifest.xml，除了复制上面截图生成的AndroidManifest.xml内容到您项目的AndroidManifest.xml外，还需要添加以下内容：</p>
-<pre><code>&lt;application&gt; 
- &lt;!-- Android 9以上适配 --&gt;
- &lt;uses-library android:name=&quot;org.apache.http.legacy&quot; android:required=&quot;false&quot;/&gt;
 
- &lt;!-- 需要添加以下配置，不然程序会崩溃.如果原来有的则不需要另外添加.value的值是Admob后台创建的应用的ID --&gt;
-  &lt;meta-data android:name=&quot;com.google.android.gms.ads.APPLICATION_ID&quot; 
-                    android:value=&quot;ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy&quot;/&gt;
-
-&lt;/application&gt;
-</code></pre>
-<p>5.在build.gradle文件内添加如下配置：</p>
+<p>4.在build.gradle文件内添加如下配置：</p>
 <pre><code>
  repositories {
         maven { url 'https://jitpack.io' }
     }
 </code></pre>
-<p>6.添加如下配置到build.gradle的dependencies内：</p>
-<pre><code>implementation("com.github.adflowsdk:adflowtp:2.2.5")
-  implementation("com.google.android.gms:play-services-ads-lite:24.0.0")
-  implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
-    implementation 'com.google.android.gms:play-services-base:18.5.0'
-implementation(&quot;com.squareup.okhttp3:okhttp:4.12.0&quot;)
+<p>5.添加如下配置到build.gradle的dependencies内：</p>
+<pre><code>implementation("com.github.adflowsdk:adflowtp:2.2.7")
+  implementation ("com.google.android.gms:play-services-ads-api:24.5.0")
 </code></pre>
 
 
