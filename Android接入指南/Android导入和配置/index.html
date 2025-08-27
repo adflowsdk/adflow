@@ -796,6 +796,8 @@
     }
 
 }
+  //这里因topon后台原因，可能分两个版本Anythink和ThinkUp版本，根据自己账号添加对应的即可
+  //Anythink版本
 dependencies {
     //Anythink (Necessary)
     implementation "androidx.appcompat:appcompat:1.6.1"
@@ -803,6 +805,17 @@ dependencies {
     implementation "com.anythink.sdk:core-tpn:6.4.87"
     implementation "com.anythink.sdk:interstitial-tpn:6.4.87"
     implementation "com.anythink.sdk:rewardedvideo-tpn:6.4.87"
+    
+
+}
+  //ThinkUp版本
+  dependencies {
+    //Thinkup (Necessary)
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.browser:browser:1.4.0"
+    implementation "com.thinkup.sdk:core-tpn:6.4.87"
+    implementation "com.thinkup.sdk:interstitial-tpn:6.4.87"
+    implementation "com.thinkup.sdk:rewardedvideo-tpn:6.4.87"
     
 
 }
@@ -815,8 +828,12 @@ dependencies {
     }
 </code></pre>
 <p>5.添加如下配置到build.gradle的dependencies内：</p>
-<pre><code>implementation("com.github.adflowsdk:adflowtp:2.2.8")
+<pre><code>
   implementation ("com.google.android.gms:play-services-ads-api:24.5.0")
+  //如果使用的是Anythink版本的话，则添加adflowtp版本的库
+  implementation("com.github.adflowsdk:adflowtp:2.2.11")
+  //如果使用的是Thinkup版本的话，则添加adflowtptu版本的库
+  implementation("com.github.adflowsdk:adflowtptu:3.1.01")
 </code></pre>
 
 
