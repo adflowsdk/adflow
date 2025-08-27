@@ -796,13 +796,13 @@
 <li>加载广告</li>
 </ol>
 <p>建议您能提前调用该步骤，这样能减少用户因加载广告耗时造成的等待。</p>
-<p>```
+<pre><code>
    ATInterstitial mInterstitialAd = new ATInterstitial(activity, "your placement id");
    //设置广告监听
    mInterstitialAd.setAdListener(new ATInterstitialListener() {
        @Override
-       public void onInterstitialAdLoaded() {}</p>
-<pre><code>   @Override
+       public void onInterstitialAdLoaded() {}
+   @Override
    public void onInterstitialAdLoadFail(AdError adError) {
        //注意：禁止在此回调中执行广告的加载方法进行重试，否则会引起很多无用请求且可能会导致应用卡顿
    }
@@ -825,21 +825,22 @@
 
    @Override
    public void onInterstitialAdClicked(ATAdInfo atAdInfo) {}
-</code></pre>
-<p>});
+
+});
    mInterstitialAd.load();
-   ```</p>
+  </code></pre> 
 <ol>
 <li>展示广告</li>
 </ol>
 <blockquote>
-<p><code>if (mInterstitialAd.isAdReady()) {
+<pre><code>
+  if (mInterstitialAd.isAdReady()) {
    ATShowConfig showConfig = new  ATShowConfig.Builder().scenarioId("your scenario id").build();
    mInterstitialAd.show(activity,showConfig);
 } else {
    mInterstitialAd.load();
 }</code>
-</p>
+</pre>
 </blockquote>
 <p>在展示广告之前，建议先调用<code>mInterstitialAd.isAdReady()</code>，值为<strong>true</strong>则展示广告，值为<strong>false</strong>则实时加载等待加载成功后再展示广告</p>
 <ol>
