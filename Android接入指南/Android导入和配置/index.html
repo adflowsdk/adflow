@@ -790,7 +790,6 @@
 <p>2.将生成的AndroidManifest.xml 代码复制到项目AndroidManifest.xml 文件内</p>
 <p>3.生成的gradle引用代码可以直接放入项目的build.gradle文件内，也可以另外建一个gradle文件，例如topon.gradle，然后在项目的build.gradle文件内引入该新建的gradle文件，apply from: 'topon.gradle'。至少应该包含以下配置：</p>
 <pre><code>repositories { 
-    //Anythink(Core)
     maven {
         url &quot;https://jfrog.anythinktech.com/artifactory/overseas_sdk&quot;
     }
