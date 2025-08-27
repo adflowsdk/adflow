@@ -797,6 +797,7 @@
 </ol>
 <p>建议您能提前调用该步骤，这样能减少用户因加载广告耗时造成的等待。</p>
 <pre><code>
+  //如果是Anythink版本则用参考下面代码：
    ATInterstitial mInterstitialAd = new ATInterstitial(activity, "your placement id");
    //设置广告监听
    mInterstitialAd.setAdListener(new ATInterstitialListener() {
@@ -828,22 +829,92 @@
 
 });
    mInterstitialAd.load();
+  //如果是Thinkup版本，则参考下面代码：
+  mInterstitialAd = new TUInterstitial(this, placementId);
+  mInterstitialAd.setAdListener(new TUInterstitialExListener() {
+      @Override
+      public void onInterstitialAdLoaded() {
+          Log.d(TAG, "onInterstitialAdLoaded");
+      }
+
+      @Override
+      public void onInterstitialAdLoadFail(AdError adError) {
+          Log.d(TAG, "onInterstitialAdLoadFail: " + adError.getFullErrorInfo());
+      }
+
+      @Override
+      public void onInterstitialAdClicked(TUAdInfo tuAdInfo) {
+          Log.d(TAG, "onInterstitialAdClicked:\n" + tuAdInfo.toString());
+      }
+
+      @Override
+      public void onInterstitialAdShow(TUAdInfo tuAdInfo) {
+          Log.d(TAG, "onInterstitialAdShow: " + tuAdInfo.toString());
+          mShowing = true;
+      }
+
+      @Override
+      public void onInterstitialAdClose(TUAdInfo tuAdInfo) {
+          Log.d(TAG, "onInterstitialAdClose: " + tuAdInfo.toString());
+          mShowing = false;
+      }
+
+      @Override
+      public void onInterstitialAdVideoStart(TUAdInfo tuAdInfo) {
+          Log.d(TAG, "onInterstitialAdVideoStart: " + tuAdInfo.toString());
+      }
+
+      @Override
+      public void onInterstitialAdVideoEnd(TUAdInfo tuAdInfo) {
+          Log.d(TAG, "onInterstitialAdVideoEnd:  " + tuAdInfo.toString());
+      }
+
+      @Override
+      public void onInterstitialAdVideoError(AdError adError) {
+          Log.d(TAG, "onInterstitialAdVideoError: " + adError.getFullErrorInfo());
+      }
+
+      @Override
+      public void onDeeplinkCallback(TUAdInfo tuAdInfo, boolean b) {
+          Log.d(TAG, "onDeeplinkCallback:" + tuAdInfo.toString() + "--status:" + b);
+
+      }
+
+      @Override
+      public void onDownloadConfirm(Context context, TUAdInfo tuAdInfo, TUNetworkConfirmInfo tuNetworkConfirmInfo) {
+          Log.d(TAG, "onDownloadConfirm: adInfo=" + tuAdInfo.toString());
+      }
+  });
+
+  mInterstitialAd.setAdSourceStatusListener(new ATAdSourceStatusListenerImpl());
+
+  mInterstitialAd.load();
   </code></pre> 
 <ol>
 <li>展示广告</li>
 </ol>
 <blockquote>
 <pre><code>
+  //使用Anythink版本的话参考下面代码
   if (mInterstitialAd.isAdReady()) {
    ATShowConfig showConfig = new  ATShowConfig.Builder().scenarioId("your scenario id").build();
    mInterstitialAd.show(activity,showConfig);
 } else {
    mInterstitialAd.load();
-}</code>
+}
+//使用Thinkup版本的话参考下面代码：
+  if (mInterstitialAd.isAdReady()) {
+   TUShowConfig showConfig = new  TUShowConfig.Builder().scenarioId("your scenario id").build();
+   mInterstitialAd.show(activity,showConfig);
+} else {
+   mInterstitialAd.load();
+}
+</code>
 </pre>
 </blockquote>
 <p>在展示广告之前，建议先调用<code>mInterstitialAd.isAdReady()</code>，值为<strong>true</strong>则展示广告，值为<strong>false</strong>则实时加载等待加载成功后再展示广告</p>
 <ol>
+  <strong>Note:</strong>
 <li>记得在该场景的activity内监控返回按键，并在广告显示时屏蔽返回按键</li>
 </ol>
 <p>返回按键的处理参照本文档初始化说明里面返回按键处理</p>
