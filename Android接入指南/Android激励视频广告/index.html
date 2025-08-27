@@ -801,14 +801,15 @@
 <li>
 <p>加载广告</p>
 </li>
-</ol>
-<p>```
+</ol> 
+<pre><code>
+  //如果使用的Anythink版本的话，参考下面代码：
    ATRewardVideoAd mRewardVideoAd = new ATRewardVideoAd(this, "your placement id");
    //设置广告监听
    mRewardVideoAd.setAdListener(new ATRewardVideoListener() {
        @Override
        public void onRewardedVideoAdLoaded() {}</p>
-<pre><code>   @Override
+   @Override
    public void onRewardedVideoAdFailed(AdError adError) {
        //注意：禁止在此回调中执行广告的加载方法进行重试，否则会引起很多无用请求且可能会导致应用卡顿
    }
@@ -835,10 +836,109 @@
 
    @Override
    public void onRewardedVideoAdPlayClicked(ATAdInfo atAdInfo) {}
-</code></pre>
-<p>});
+
+});
    mRewardVideoAd.load();
-   ```</p>
+  //如果使用的是Thinkup版本的话，参考下面代码：
+  mRewardVideoAd = new TURewardVideoAd(this, placementId);
+  mRewardVideoAd.setAdRevenueListener(new AdRevenueListenerImpl());
+  mRewardVideoAd.setAdListener(new TURewardVideoExListener() {
+
+      @Override
+      public void onRewardedVideoAdLoaded() {
+          Log.d(TAG, "onInterstitialAdLoaded");
+      }
+
+      @Override
+      public void onRewardedVideoAdFailed(AdError adError) {
+
+      }
+
+      @Override
+      public void onRewardedVideoAdPlayStart(TUAdInfo atAdInfo) {
+          mShowing = true;
+          //此处也可以用变量记录当前显示的广告源的名字或者id等信息, 用于后续的返回按键的处理
+      }
+
+      @Override
+      public void onRewardedVideoAdPlayEnd(TUAdInfo atAdInfo) {
+
+      }
+
+      @Override
+      public void onRewardedVideoAdPlayFailed(AdError adError, TUAdInfo atAdInfo) {
+
+      }
+
+      @Override
+      public void onRewardedVideoAdClosed(TUAdInfo atAdInfo) {
+          mShowing = false;
+          
+      }
+
+      @Override
+      public void onRewardedVideoAdPlayClicked(TUAdInfo atAdInfo) {
+          String click  = "click";
+      }
+
+      @Override
+      public void onReward(TUAdInfo atAdInfo) {
+
+      }
+
+      @Override
+      public void onRewardFailed(TUAdInfo atAdInfo) {
+
+      }
+
+      @Override
+      public void onDeeplinkCallback(TUAdInfo adInfo, boolean isSuccess) {
+          Log.d(TAG, "onDeeplinkCallback:" + adInfo.toString() + "--status:" + isSuccess);
+
+      }
+
+      @Override
+      public void onDownloadConfirm(Context context, TUAdInfo adInfo, TUNetworkConfirmInfo networkConfirmInfo) {
+          Log.d(TAG, "onDownloadConfirm: adInfo=" + adInfo.toString());
+
+      }
+
+      @Override
+      public void onRewardedVideoAdAgainPlayStart(TUAdInfo atAdInfo) {
+
+      }
+
+      @Override
+      public void onRewardedVideoAdAgainPlayEnd(TUAdInfo atAdInfo) {
+
+      }
+
+      @Override
+      public void onRewardedVideoAdAgainPlayFailed(AdError adError, TUAdInfo atAdInfo) {
+
+      }
+
+      @Override
+      public void onRewardedVideoAdAgainPlayClicked(TUAdInfo atAdInfo) {
+
+      }
+
+      @Override
+      public void onAgainReward(TUAdInfo atAdInfo) {
+
+      }
+
+      @Override
+      public void onAgainRewardFailed(TUAdInfo atAdInfo) {
+
+      }
+
+
+
+  });
+
+  mRewardVideoAd.setAdSourceStatusListener(new ATAdSourceStatusListenerImpl());
+</code></pre>
 <p>建议您能提前调用该步骤，这样能减少用户因加载广告耗时造成的等待。</p>
 <ol>
 <li>检查广告是否缓存好</li>
@@ -847,30 +947,31 @@
 <ol>
 <li>展示广告</li>
 </ol>
-<p><code>if (mRewardVideoAd.isAdReady()) {
+<p><code>
+  //如果使用的是Anythink版本的话，参考下面代码
+  if (mRewardVideoAd.isAdReady()) {
       ATShowConfig showConfig = new ATShowConfig.Builder()
                    .scenarioId("your scenario id")
                    .build();
        mRewardVideoAd.show(activity，showConfig);
    } else {
       mRewardVideoAd.load();
-   }</code></p>
+   }
+//如果使用的是Thinkup版本的话，参考下面代码：
+  if (mRewardVideoAd.isAdReady()) {
+      TUShowConfig showConfig = new TUShowConfig.Builder()
+                   .scenarioId("your scenario id")
+                   .build();
+       mRewardVideoAd.show(activity，showConfig);
+   } else {
+      mRewardVideoAd.load();
+   }
+</code></p>
 <p>在展示广告之前，建议先调用<code>mRewardVideoAd.isAdReady()</code>，值为<strong>true</strong>则展示广告，值为<strong>false</strong>则实时加载等待加载成功后再展示广告</p>
-<p>5.记得在该场景的activity内监控返回按键，并在广告显示时屏蔽返回按键</p>
+<strong>Note:</strong>
+                <p>5.记得在该场景的activity内监控返回按键，并在广告显示时屏蔽返回按键</p>
 <p><p>返回按键的处理参照本文档初始化说明里面返回按键处理</p></p>
-
-
-
-
-
-
-
-
-
-
-
-
-                
+ 
               </article>
             </div>
           
