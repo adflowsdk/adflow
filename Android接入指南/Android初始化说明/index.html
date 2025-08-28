@@ -463,27 +463,39 @@ if (palette && palette.color) {
 							<pre>
 								<code>
 									//如果使用的topon版本库为Anythink的话(api "com.anythink.sdk:core-tpn:6.4.87")，使用下面的代码
-									if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.P) { String processName
-									= getProcessName(); if (!getPackageName().equals(processName)) { WebView.setDataDirectorySuffix(processName);
-									} } //如果要支持多渠道的话需要添加以下代码 Map
-									<String, String>
-										customMap = new HashMap
-										<>
-											(); customMap.put("channel","1808");//渠道，如果不需要区分渠道则可不添加 customMap.put("sub_channel","101");//子渠道，如果不需要区分渠道则可不添加
-											ATSDK.initCustomMap(Collections.unmodifiableMap(customMap));//渠道，如果不需要区分渠道则可不添加
-											//以下代码需要添加 ATSDK.integrationChecking(getApplicationContext()); ATSDK.setPersonalizedAdStatus(ATAdConst.PRIVACY.PERSIONALIZED_ALLOW_STATUS);
-											ATSDK.init(this, appid, appkey); //如果使用的topon版本库为ThinkUp的话(implementation
-											"com.thinkup.sdk:core-tpn:6.4.87")，使用下面的代码： if (Build.VERSION.SDK_INT >=
-											Build.VERSION_CODES.P) { String processName = getProcessName(); if (!getPackageName().equals(processName))
-											{ WebView.setDataDirectorySuffix(processName); } } if (!isMainProcess(this))
-											{ return; } Map
-											<String, Object>
-												customMap = new HashMap
-												<>
-													(); customMap.put("channel","1808");//渠道，如果不需要区分渠道则可不添加 customMap.put("sub_channel","101");//子渠道，如果不需要区分渠道则可不添加
-													TUSDK.initCustomMap((customMap)); TUSDK.integrationChecking(getApplicationContext());
-													TUSDK.setPersonalizedAdStatus(TUAdConst.PRIVACY.PERSIONALIZED_ALLOW_STATUS);
-													TUSDK.init(this, appid, appkey);
+									if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.P) { 
+										String processName = getProcessName(); 
+										if (!getPackageName().equals(processName)) { 
+											WebView.setDataDirectorySuffix(processName);
+										} 
+									}
+									//如果要支持多渠道的话需要添加以下代码 
+									Map<String, String>customMap = new HashMap<>(); 
+									customMap.put("channel","1808");//渠道，如果不需要区分渠道则可不添加
+									customMap.put("sub_channel","101");//子渠道，如果不需要区分渠道则可不添加
+									ATSDK.initCustomMap(Collections.unmodifiableMap(customMap));//渠道，如果不需要区分渠道则可不添加
+									//以下代码需要添加
+									ATSDK.integrationChecking(getApplicationContext());
+									ATSDK.setPersonalizedAdStatus(ATAdConst.PRIVACY.PERSIONALIZED_ALLOW_STATUS);
+									ATSDK.init(this, appid, appkey);
+									
+									//如果使用的topon版本库为ThinkUp的话(implementation "com.thinkup.sdk:core-tpn:6.4.87")，使用下面的代码： 
+									if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) { 
+										String processName = getProcessName(); 
+										if (!getPackageName().equals(processName)){ 
+											WebView.setDataDirectorySuffix(processName); 
+										} 
+									} 
+									if (!isMainProcess(this)){ 
+										return;
+									}
+									Map<String, Object> customMap = new HashMap<>(); 
+									customMap.put("channel","1808");//渠道，如果不需要区分渠道则可不添加 
+									customMap.put("sub_channel","101");//子渠道，如果不需要区分渠道则可不添加
+									TUSDK.initCustomMap((customMap)); 
+									TUSDK.integrationChecking(getApplicationContext());
+									TUSDK.setPersonalizedAdStatus(TUAdConst.PRIVACY.PERSIONALIZED_ALLOW_STATUS);
+									TUSDK.init(this, appid, appkey);
 								</code>
 							</pre>
 							<p>
@@ -491,11 +503,17 @@ if (palette && palette.color) {
 							</p>
 							<pre>
 								<code>
-									import com.adflow.adflowads.AdFlowBackBroadCast; @Override public boolean
-									onKeyDown(int keyCode, KeyEvent event) { if (keyCode == KeyEvent.KEYCODE_BACK){
-									if(mShowing){//判断条件也可以增加判断当前显示的是Adflow平台的广告才发送广播，具体就是在mShowing变量赋值的地方，通过adinfo获取平台的id或者networkname,是我们的Adflow平台才发送广播
-									AdFlowBackBroadCast.sendBackBroadcast(getApplicationContext()); return
-									true; } } return super.onKeyDown(keyCode, event); }
+									import com.adflow.adflowads.AdFlowBackBroadCast; 
+									@Override 
+									public boolean onKeyDown(int keyCode, KeyEvent event) {
+										if (keyCode == KeyEvent.KEYCODE_BACK){
+											if(mShowing){//判断条件也可以增加判断当前显示的是Adflow平台的广告才发送广播，具体就是在mShowing变量赋值的地方，通过adinfo获取平台的id或者networkname,是我们的Adflow平台才发送广播
+												AdFlowBackBroadCast.sendBackBroadcast(getApplicationContext()); 
+												return true; 
+											} 
+										} 
+										return super.onKeyDown(keyCode, event); 
+									}
 								</code>
 							</pre>
 							<p>
