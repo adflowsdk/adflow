@@ -508,37 +508,82 @@ if (palette && palette.color) {
 							</p>
 							<pre>
 								<code>
-									//如果是Anythink版本则用参考下面代码： ATInterstitial mInterstitialAd = new ATInterstitial(activity,
-									"your placement id"); //设置广告监听 mInterstitialAd.setAdListener(new ATInterstitialListener()
-									{ @Override public void onInterstitialAdLoaded() {} @Override public void
-									onInterstitialAdLoadFail(AdError adError) { //注意：禁止在此回调中执行广告的加载方法进行重试，否则会引起很多无用请求且可能会导致应用卡顿
-									} @Override public void onInterstitialAdShow(ATAdInfo adInfo) { //建议在此回调中调用load进行广告的加载，方便下一次广告的展示（不需要调用isAdReady()）
-									mInterstitialAd.load(); } @Override public void onInterstitialAdVideoStart(ATAdInfo
-									adInfo) {} @Override public void onInterstitialAdVideoEnd(ATAdInfo atAdInfo)
-									{} @Override public void onInterstitialAdVideoError(AdError adError, ATAdInfo
-									atAdInfo) {} @Override public void onInterstitialAdClose(ATAdInfo atAdInfo)
-									{} @Override public void onInterstitialAdClicked(ATAdInfo atAdInfo) {}
-									}); mInterstitialAd.load(); //如果是Thinkup版本，则参考下面代码： mInterstitialAd = new
-									TUInterstitial(this, placementId); mInterstitialAd.setAdListener(new TUInterstitialExListener()
-									{ @Override public void onInterstitialAdLoaded() { Log.d(TAG, "onInterstitialAdLoaded");
-									} @Override public void onInterstitialAdLoadFail(AdError adError) { Log.d(TAG,
-									"onInterstitialAdLoadFail: " + adError.getFullErrorInfo()); } @Override
-									public void onInterstitialAdClicked(TUAdInfo tuAdInfo) { Log.d(TAG, "onInterstitialAdClicked:\n"
-									+ tuAdInfo.toString()); } @Override public void onInterstitialAdShow(TUAdInfo
-									tuAdInfo) { Log.d(TAG, "onInterstitialAdShow: " + tuAdInfo.toString());
-									mShowing = true; } @Override public void onInterstitialAdClose(TUAdInfo
-									tuAdInfo) { Log.d(TAG, "onInterstitialAdClose: " + tuAdInfo.toString());
-									mShowing = false; } @Override public void onInterstitialAdVideoStart(TUAdInfo
-									tuAdInfo) { Log.d(TAG, "onInterstitialAdVideoStart: " + tuAdInfo.toString());
-									} @Override public void onInterstitialAdVideoEnd(TUAdInfo tuAdInfo) { Log.d(TAG,
-									"onInterstitialAdVideoEnd: " + tuAdInfo.toString()); } @Override public
-									void onInterstitialAdVideoError(AdError adError) { Log.d(TAG, "onInterstitialAdVideoError:
-									" + adError.getFullErrorInfo()); } @Override public void onDeeplinkCallback(TUAdInfo
-									tuAdInfo, boolean b) { Log.d(TAG, "onDeeplinkCallback:" + tuAdInfo.toString()
-									+ "--status:" + b); } @Override public void onDownloadConfirm(Context context,
-									TUAdInfo tuAdInfo, TUNetworkConfirmInfo tuNetworkConfirmInfo) { Log.d(TAG,
-									"onDownloadConfirm: adInfo=" + tuAdInfo.toString()); } }); mInterstitialAd.setAdSourceStatusListener(new
-									ATAdSourceStatusListenerImpl()); mInterstitialAd.load();
+									//如果是Anythink版本则用参考下面代码： 
+									ATInterstitial mInterstitialAd = new ATInterstitial(activity,"your placement id"); 
+									//设置广告监听 
+									mInterstitialAd.setAdListener(new ATInterstitialListener(){ 
+										@Override 
+										public void onInterstitialAdLoaded() {} 
+										@Override 
+										public void onInterstitialAdLoadFail(AdError adError) {
+											//注意：禁止在此回调中执行广告的加载方法进行重试，否则会引起很多无用请求且可能会导致应用卡顿
+										} 
+										@Override 
+										public void onInterstitialAdShow(ATAdInfo adInfo) { 
+											//建议在此回调中调用load进行广告的加载，方便下一次广告的展示（不需要调用isAdReady()）
+											mInterstitialAd.load(); 
+										} 
+										@Override 
+										public void onInterstitialAdVideoStart(ATAdInfo adInfo) {} 
+										@Override 
+										public void onInterstitialAdVideoEnd(ATAdInfo atAdInfo){} 
+										@Override 
+										public void onInterstitialAdVideoError(AdError adError, ATAdInfo atAdInfo) {} 
+										@Override 
+										public void onInterstitialAdClose(ATAdInfo atAdInfo) {} 
+										@Override 
+										public void onInterstitialAdClicked(ATAdInfo atAdInfo) {}
+									}); 
+									mInterstitialAd.load(); 
+									//如果是Thinkup版本，则参考下面代码： 
+									 
+									mInterstitialAd = new TUInterstitial(this, placementId); 
+									mInterstitialAd.setAdListener(new TUInterstitialExListener() { 
+									 	@Override 
+										public void onInterstitialAdLoaded() { 
+											Log.d(TAG, "onInterstitialAdLoaded");
+										} 
+										@Override 
+										public void onInterstitialAdLoadFail(AdError adError) {
+											Log.d(TAG,"onInterstitialAdLoadFail: " + adError.getFullErrorInfo()); 
+										} 
+										@Override
+										public void onInterstitialAdClicked(TUAdInfo tuAdInfo) {
+											Log.d(TAG, "onInterstitialAdClicked:\n" + tuAdInfo.toString()); 
+										} 
+										@Override
+										public void onInterstitialAdShow(TUAdInfo tuAdInfo) { 
+											Log.d(TAG, "onInterstitialAdShow: " + tuAdInfo.toString());
+											mShowing = true; 
+										} 
+										@Override 
+										public void onInterstitialAdClose(TUAdInfo tuAdInfo) {
+											Log.d(TAG, "onInterstitialAdClose: " + tuAdInfo.toString());
+											mShowing = false; 
+										} 
+										@Override 
+										public void onInterstitialAdVideoStart(TUAdInfo tuAdInfo) {
+											Log.d(TAG, "onInterstitialAdVideoStart: " + tuAdInfo.toString());
+										} 
+										@Override 
+										public void onInterstitialAdVideoEnd(TUAdInfo tuAdInfo) {
+											Log.d(TAG, "onInterstitialAdVideoEnd: " + tuAdInfo.toString()); 
+										} 
+										@Override 
+										public void onInterstitialAdVideoError(AdError adError) {
+											Log.d(TAG, "onInterstitialAdVideoError: " + adError.getFullErrorInfo()); 
+										} 
+										@Override 
+										public void onDeeplinkCallback(TUAdInfo tuAdInfo, boolean b) {
+											Log.d(TAG, "onDeeplinkCallback:" + tuAdInfo.toString() + "--status:" + b); 
+										} 
+										@Override 
+										public void onDownloadConfirm(Context context, TUAdInfo tuAdInfo, TUNetworkConfirmInfo tuNetworkConfirmInfo) {
+											Log.d(TAG, "onDownloadConfirm: adInfo=" + tuAdInfo.toString()); 
+										} 
+									}); 
+									mInterstitialAd.setAdSourceStatusListener(new ATAdSourceStatusListenerImpl());
+									mInterstitialAd.load();
 								</code>
 							</pre>
 							<ol>
@@ -549,12 +594,19 @@ if (palette && palette.color) {
 							<blockquote>
 								<pre>
 									<code>
-										//使用Anythink版本的话参考下面代码 if (mInterstitialAd.isAdReady()) { ATShowConfig
-										showConfig = new ATShowConfig.Builder().scenarioId("your scenario id").build();
-										mInterstitialAd.show(activity,showConfig); } else { mInterstitialAd.load();
-										} //使用Thinkup版本的话参考下面代码： if (mInterstitialAd.isAdReady()) { TUShowConfig
-										showConfig = new TUShowConfig.Builder().scenarioId("your scenario id").build();
-										mInterstitialAd.show(activity,showConfig); } else { mInterstitialAd.load();
+										//使用Anythink版本的话参考下面代码 
+										if (mInterstitialAd.isAdReady()) {
+											ATShowConfig showConfig = new ATShowConfig.Builder().scenarioId("your scenario id").build();
+											mInterstitialAd.show(activity,showConfig); 
+										} else {
+											mInterstitialAd.load();
+										} 
+										//使用Thinkup版本的话参考下面代码：
+										if (mInterstitialAd.isAdReady()) {
+											TUShowConfig showConfig = new TUShowConfig.Builder().scenarioId("your scenario id").build();
+											mInterstitialAd.show(activity,showConfig); 
+										} else { 
+											mInterstitialAd.load();
 										}
 									</code>
 								</pre>
