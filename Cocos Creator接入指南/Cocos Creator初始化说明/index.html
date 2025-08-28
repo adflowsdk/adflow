@@ -473,22 +473,42 @@ if (palette && palette.color) {
 							</p>
 							<pre>
 								<code>
-									//JS导入AnyThink SDK require(&quot;./AnyThinkAds/ATJSSDK&quot;); var customMap
-									= { &quot;appCustomKey1&quot;: &quot;appCustomValue1&quot;, &quot;appCustomKey2&quot;
-									: &quot;appCustomValue2&quot; }; //设置自定义的Map信息，可匹配后台配置的广告商顺序的列表（App纬度）（可选配置）
-									ATJSSDK.initCustomMap(customMap); var customPlacementId = &quot;&quot;;
-									if (cc.sys.os === cc.sys.OS_IOS) { customPlacementId = &quot;b5b72b21184aa8&quot;;
-									} else if (cc.sys.os === cc.sys.OS_ANDROID) { customPlacementId = &quot;b5b449fb3d89d7&quot;;
-									} var placementCustomMap = { &quot;placementCustomKey1&quot;: &quot;placementCustomValue1&quot;,
-									&quot;placementCustomKey2&quot; : &quot;placementCustomValue2&quot; };
-									//设置自定义的Map信息，可匹配后台配置的广告商顺序的列表（Placement纬度）（可选配置） ATJSSDK.setPlacementCustomMap(customPlacementId,
-									placementCustomMap); // 设置GDPR的等级： // ATJSSDK.PERSONALIZED（允许上报个人信息） //
-									ATJSSDK.NONPERSONALIZED（不允许上报个人信息） // ATJSSDK.setGDPRLevel(ATJSSDK.PERSONALIZED);
-									// 获取GDPR等级 var GDPRLevel = ATJSSDK.getGDPRLevel(); // 初始化SDK ATJSSDK.initSDK(&quot;appid&quot;,
-									&quot;appkey&quot;); // 针对欧盟地区初始化时做的处理，按需求打开，不在欧盟地区发布的不用使用。 ATJSSDK.getUserLocation(function
-									(userLocation) { //如果处于欧盟地区且等级是UNKNOW时，就执行授权弹窗 if (userLocation === ATJSSDK.kATUserLocationInEU)
-									{ if(ATJSSDK.getGDPRLevel() === ATJSSDK.UNKNOWN) { ATJSSDK.showGDPRAuth();
-									} } });
+									//JS导入AnyThink SDK 
+									require(&quot;./AnyThinkAds/ATJSSDK&quot;);
+									var customMap = { &quot;appCustomKey1&quot;: &quot;appCustomValue1&quot;, &quot;appCustomKey2&quot;
+									: &quot;appCustomValue2&quot; 
+									}; 
+									//设置自定义的Map信息，可匹配后台配置的广告商顺序的列表（App纬度）（可选配置）
+									ATJSSDK.initCustomMap(customMap);
+									var customPlacementId = &quot;&quot;;
+									if (cc.sys.os === cc.sys.OS_IOS) {
+										customPlacementId = &quot;b5b72b21184aa8&quot;;
+									} else if (cc.sys.os === cc.sys.OS_ANDROID) {
+										customPlacementId = &quot;b5b449fb3d89d7&quot;;
+									} 
+									var placementCustomMap = { 
+										&quot;placementCustomKey1&quot;: &quot;placementCustomValue1&quot;,
+										&quot;placementCustomKey2&quot; : &quot;placementCustomValue2&quot; 
+									};
+									//设置自定义的Map信息，可匹配后台配置的广告商顺序的列表（Placement纬度）（可选配置）
+									ATJSSDK.setPlacementCustomMap(customPlacementId, placementCustomMap); 
+									// 设置GDPR的等级： 
+									// ATJSSDK.PERSONALIZED（允许上报个人信息） 
+									//ATJSSDK.NONPERSONALIZED（不允许上报个人信息） 
+									// ATJSSDK.setGDPRLevel(ATJSSDK.PERSONALIZED);
+									// 获取GDPR等级 
+									var GDPRLevel = ATJSSDK.getGDPRLevel(); 
+									// 初始化SDK 
+									ATJSSDK.initSDK(&quot;appid&quot;, &quot;appkey&quot;);
+									// 针对欧盟地区初始化时做的处理，按需求打开，不在欧盟地区发布的不用使用。 
+									ATJSSDK.getUserLocation(function (userLocation) { 
+										//如果处于欧盟地区且等级是UNKNOW时，就执行授权弹窗 
+										if (userLocation === ATJSSDK.kATUserLocationInEU){ 
+											if(ATJSSDK.getGDPRLevel() === ATJSSDK.UNKNOWN) {
+												ATJSSDK.showGDPRAuth();
+											} 
+										} 
+									});
 								</code>
 							</pre>
 							<p>
@@ -502,12 +522,23 @@ if (palette && palette.color) {
 							</p>
 							<pre>
 								<code>
-									extends: cc.Component, onLoad() { // 监听按键事件 cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN,
-									this.onKeyDown, this); }, onKeyDown(event) { if (event.keyCode === cc.macro.KEY.back)
-									{ if(mShowing){ //此处需要添加发送广播的行为，广播的action分别为："com.adflow.adflowsdk.interstitial.back"，"com.adflow.adflowsdk.reward.back"
-									event.preventDefault(); // 阻止默认行为 } console.log(&quot;返回键被按下，但已被屏蔽&quot;);
-									// 你可以在这里添加自定义逻辑，比如弹出退出确认对话框 } }, onDestroy() { // 移除事件监听 cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN,
-									this.onKeyDown, this); }
+									extends: cc.Component, onLoad() { 
+										// 监听按键事件 
+										cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this); 
+									}, onKeyDown(event) { 
+									if (event.keyCode === cc.macro.KEY.back)
+									{ 
+										if(mShowing){ 
+										//此处需要添加发送广播的行为，广播的action分别为："com.adflow.adflowsdk.interstitial.back"，"com.adflow.adflowsdk.reward.back"
+											event.preventDefault(); 
+										// 阻止默认行为 
+										} console.log(&quot;返回键被按下，但已被屏蔽&quot;);
+										// 你可以在这里添加自定义逻辑，比如弹出退出确认对话框 
+									} 
+									}, onDestroy() { 
+										// 移除事件监听 
+										cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this); 
+									}
 								</code>
 							</pre>
 							<p>
