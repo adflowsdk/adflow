@@ -474,14 +474,14 @@ if (palette && palette.color) {
 									加载插屏广告
 								</li>
 							</ol>
-							<p>
-								``` //v5.6.8新增，只针对Sigmob平台，Sigmob的激励视频广告源当做插屏使用 var setting = {}; setting[ATInterstitialJSSDK.UseRewardedVideoAsInterstitial]
-								= false; //setting[ATInterstitialJSSDK.UseRewardedVideoAsInterstitial]
-								= true; ATInterstitialJSSDK.loadInterstitial(this.placementID(), setting);
-							</p>
-							<p>
-								```
-							</p>
+							<code>
+								//v5.6.8新增，只针对Sigmob平台，Sigmob的激励视频广告源当做插屏使用 
+								var setting = {}; 
+								setting[ATInterstitialJSSDK.UseRewardedVideoAsInterstitial] = false; 
+								//setting[ATInterstitialJSSDK.UseRewardedVideoAsInterstitial] = true; 
+								ATInterstitialJSSDK.loadInterstitial(this.placementID(), setting);
+							</code>
+							<p> 
 							<ol>
 								<li>
 									判断是否有广告缓存以及获取广告状态
@@ -497,49 +497,64 @@ if (palette && palette.color) {
 									展示插屏广告
 								</li>
 							</ol>
-							<p>
-								``` ATInterstitialJSSDK.showAd(this.placementID());
-							</p>
-							<p>
-								//当使用场景功能时，通过此api展示广告 //ATInterstitialJSSDK.showAdInScenario(this.placementID(),
-								"Your Scenario Id"); ```
-							</p>
+							<code>
+								ATInterstitialJSSDK.showAd(this.placementID());
+							</code>
+							<code>
+								//当使用场景功能时，通过此api展示广告 //
+								ATInterstitialJSSDK.showAdInScenario(this.placementID(), "Your Scenario Id");
+							</code>
 							<ol>
 								<li>
 									设置插屏广告监听器，监听插屏广告事件(加载成功/失败、展示、点击、视频开始/结束和激励)
 								</li>
 							</ol>
-							<p>
-								``` var interstitialListener = { //广告加载成功 onInterstitialAdLoaded : function
-								(placementId) { ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdLoaded("
-								+ placementId + ")"); }, //广告加载失败 onInterstitialAdLoadFail : function(placementId,
-								errorInfo) { ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdLoadFail("
-								+ placementId + ", " + errorInfo + ")");
-								<br />
-								}, //广告展示成功 onInterstitialAdShow : function(placementId, callbackInfo)
-								{ ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdShow(" +
-								placementId + ", " + callbackInfo + ")"); }, //广告视频开始播放，部分平台有此回调 onInterstitialAdStartPlayingVideo
-								: function(placementId, callbackInfo) { ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdStartPlayingVideo("
-								+ placementId + ", " + callbackInfo + ")"); }, //广告视频播放结束，部分广告平台有此回调 onInterstitialAdEndPlayingVideo
-								: function(placementId, callbackInfo) { ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdEndPlayingVideo("
-								+ placementId + ", " + callbackInfo + ")"); }, //广告视频播放失败，部分广告平台有此回调 onInterstitialAdFailedToPlayVideo
-								: function(placementId, errorInfo) { ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdFailedToPlayVideo("
-								+ placementId + ", " + errorInfo + ")"); }, //广告展示失败 onInterstitialAdFailedToShow
-								: function(placementId) { ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdFailedToShow("
-								+ placementId + ")"); }, //广告被关闭 onInterstitialAdClose : function(placementId,
-								callbackInfo) { ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdClose("
-								+ placementId + ", " + callbackInfo + ")"); }, //广告被点击 onInterstitialAdClick
-								: function(placementId, callbackInfo) { ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdClick("
-								+ placementId + ", " + callbackInfo + ")"); } };
+							<code>
+								var interstitialListener = { 
+									//广告加载成功 
+									onInterstitialAdLoaded : function (placementId) { 
+										ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdLoaded(" + placementId + ")"); 
+									}, 
+									//广告加载失败 
+									onInterstitialAdLoadFail : function(placementId, errorInfo) {
+										ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdLoadFail(" + placementId + ", " + errorInfo + ")");
+								 
+									}, 
+									//广告展示成功 
+									onInterstitialAdShow : function(placementId, callbackInfo) { 
+										ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdShow(" + placementId + ", " + callbackInfo + ")"); 
+									}, 
+									//广告视频开始播放，部分平台有此回调
+									onInterstitialAdStartPlayingVideo : function(placementId, callbackInfo) { 
+										ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdStartPlayingVideo(" + placementId + ", " + callbackInfo + ")"); 
+									}, 
+									//广告视频播放结束，部分广告平台有此回调 
+									onInterstitialAdEndPlayingVideo : function(placementId, callbackInfo) {
+										ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdEndPlayingVideo(" + placementId + ", " + callbackInfo + ")"); 
+									}, 
+									//广告视频播放失败，部分广告平台有此回调 
+									onInterstitialAdFailedToPlayVideo : function(placementId, errorInfo) {
+										ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdFailedToPlayVideo(" + placementId + ", " + errorInfo + ")"); 
+									}, 
+									//广告展示失败 
+									onInterstitialAdFailedToShow : function(placementId) { 
+										ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdFailedToShow(" + placementId + ")"); 
+									}, 
+									//广告被关闭
+									onInterstitialAdClose : function(placementId, callbackInfo) {
+										ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdClose(" + placementId + ", " + callbackInfo + ")"); 
+									}, 
+									//广告被点击 
+									onInterstitialAdClick : function(placementId, callbackInfo) { 
+										ATJSSDK.printLog("AnyThinkInterstitialDemo::onInterstitialAdClick(" + placementId + ", " + callbackInfo + ")"); 
+									} 
+								};
 							</p>
 							<p>
 								ATInterstitialJSSDK.setAdListener(interstitialListener);
-							</p>
+							</p> 
 							<p>
-								```
-							</p>
-							<p>
-								note: 需要处理返回按键，请参考初始化说明文档内的返回按键处理
+								<strong>Note:</strong> 需要处理返回按键，请参考初始化说明文档内的返回按键处理
 							</p>
 						</article>
 					</div>
