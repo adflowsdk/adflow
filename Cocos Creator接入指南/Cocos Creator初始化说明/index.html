@@ -201,24 +201,7 @@ if (palette && palette.color) {
 															</span>
 														</a>
 													</li>
-													<p>
-														5.在需要展示插屏广告和激励广告的Activity内添加返回按键处理，代码如下:
-													</p>
-													<pre>
-														<code>
-															private void sendCustomBroadcast(){ Intent intersitialback = new Intent("com.adflow.adflowsdk.interstitial.back");
-															intersitialback.setPackage(getPackageName());//一定要加，否则sdk收不到返回按键，用户则在页面内无法后退到首页
-															sendBroadcast(intersitialback); Intent rewardback = new Intent("com.adflow.adflowsdk.reward.back");
-															rewardback.setPackage(getPackageName());////一定要加，否则sdk收不到返回按键，用户则在页面内无法后退到首页
-															sendBroadcast(rewardback); } @Override public boolean onKeyDown(int keyCode,
-															KeyEvent event) { if (keyCode == KeyEvent.KEYCODE_BACK){ if(mShowing){
-															sendCustomBroadcast(); return true; } } return super.onKeyDown(keyCode,
-															event); }
-														</code>
-													</pre>
-													<p>
-														此处的mShowing是判断当前正在展示广告，展示广告期间，屏蔽返回按键，避免返回操作直接关闭当前正在展示的广告。可以在onInterstitialAdShow/onRewardedVideoAdPlayStart接口内设置mShowing为true，在onInterstitialAdClose/onRewardedVideoAdClosed接口内设置mShowing为false
-													</p>
+													 
 												</ul>
 											</nav>
 										</li>
