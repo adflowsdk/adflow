@@ -457,6 +457,7 @@ if (palette && palette.color) {
 							<h1>
 								测试说明
 							</h1>
+							<h2>一.配置后台</h2>
 							<ol>
 								<li>
 									<p>添加应用：应用管理->添加应用->添加单个应用.如下图所示</p>
@@ -498,6 +499,22 @@ if (palette && palette.color) {
 									</p>
 									<img src="..\..\images\adflow_add_9.png"></img>
 								</li>
+							</ol>
+							<h2>二.App端接入</h2>
+							<ol>
+								<li>
+									<p>根据自己App平台按照文档里面接入好sdk</p>
+								</li>
+								<li>
+									<p>Topon后台广告源先只打开我们AdFlow平台的广告源</p>
+								</li>
+								<li>
+									<p>在App特定锚点(例如进入关卡)调用mInterstitialAd.load();预加载广告</p>
+								</li>
+								<li>
+									<p>在特定锚点(例如用户点击某个按钮)调用mInterstitialAd.show();显示广告</p>
+								</li>
+								
 							</ol>
 						</article>
 					</div>
