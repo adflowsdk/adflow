@@ -534,7 +534,11 @@ if (palette && palette.color) {
 									</p>
 									<p>
 										<code>
-											implementation "com.google.android.gms:play-services-ads-api:24.5.0" implementation("com.github.adflowsdk:adflowtp:2.2.8")
+											implementation ("com.google.android.gms:play-services-ads-api:24.5.0")
+									//如果使用的是Anythink版本的话，则添加adflowtp版本的库 
+									implementation("com.github.adflowsdk:adflowtp:2.2.11")
+									//如果使用的是Thinkup版本的话，则添加adflowtptu版本的库 
+									implementation("com.github.adflowsdk:adflowtptu:3.1.01")
 										</code>
 									</p>
 								</li>
