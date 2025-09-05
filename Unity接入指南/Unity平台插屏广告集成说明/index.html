@@ -624,33 +624,47 @@ if (palette && palette.color) {
 								</strong>
 								）
 							</p>
-							<p>
-								``` //sender 为广告类型对象，erg为返回信息 //广告被点击 public void onAdClick(object sender,ATAdEventArgs
-								erg) { Debug.Log("Developer callback onInterstitialAdClick :" + erg.placementId);
-								} //广告被关闭 public void onAdClose(object sender,ATAdEventArgs erg) { Debug.Log("Developer
-								callback onInterstitialAdClose :" + erg.placementId); } //广告视频播放结束，部分广告平台有此回调
-								public void endVideoPlayback(object sender,ATAdEventArgs erg) { Debug.Log("Developer
-								callback onInterstitialAdEndPlayingVideo :" + erg.placementId); } //广告视频播放失败，部分广告平台有此回调
-								public void failVideoPlayback(object sender,ATAdEventArgs erg) { Debug.Log("Developer
-								callback onInterstitialAdFailedToPlayVideo :" + erg.placementId + "--code:"
-								+ erg.code + "--msg:" + erg.message); } //广告加载成功 public void onAdLoad(object
-								sender,ATAdEventArgs erg) { Debug.Log("Developer callback onInterstitialAdLoad
-								:" + erg.placementId); } //广告加载失败 public void onAdLoadFail(object sender,ATAdErrorEventArgs
-								erg ) { Debug.Log("Developer callback onInterstitialAdLoadFail :" + erg.placementId
-								+ "--erg.code:" + code + "--msg:" + erg.message); } //广告展示成功 public void
-								onShow(object sender,ATAdEventArgs erg) { Debug.Log("Developer callback
-								onInterstitialAdShow :" +erg. placementId); } //广告视频开始播放，部分平台有此回调 public
-								void startVideoPlayback(object sender,ATAdEventArgs erg) { Debug.Log("Developer
-								callback onInterstitialAdStartPlayingVideo :" + erg.placementId); } //广告展示失败
-								public void failVideoPlayback(object sender,ATAdEventArgs erg) { Debug.Log("Developer
-								callback onInterstitialAdFailedToShow :" + erg.placementId); }
-							</p>
-							<p>
-								```
-							</p>
-							<p>
-								Note: 需要处理返回按键，具体代码请参考初始化说明文档部分
-							</p>
+							<code>
+								//sender 为广告类型对象，erg为返回信息 
+								//广告被点击 
+								public void onAdClick(object sender,ATAdEventArgs erg) { 
+									Debug.Log("Developer callback onInterstitialAdClick :" + erg.placementId);
+								} 
+								//广告被关闭 
+								public void onAdClose(object sender,ATAdEventArgs erg) {
+									Debug.Log("Developer callback onInterstitialAdClose :" + erg.placementId); 
+								} 
+								//广告视频播放结束，部分广告平台有此回调
+								public void endVideoPlayback(object sender,ATAdEventArgs erg) { 
+									Debug.Log("Developer callback onInterstitialAdEndPlayingVideo :" + erg.placementId); 
+								} 
+								//广告视频播放失败，部分广告平台有此回调
+								public void failVideoPlayback(object sender,ATAdEventArgs erg) {
+									Debug.Log("Developer callback onInterstitialAdFailedToPlayVideo :" + erg.placementId + "--code:"
+								+ erg.code + "--msg:" + erg.message); 
+								} 
+								//广告加载成功 
+								public void onAdLoad(object sender,ATAdEventArgs erg) {
+									Debug.Log("Developer callback onInterstitialAdLoad:" + erg.placementId); 
+								} 
+								//广告加载失败 
+								public void onAdLoadFail(object sender,ATAdErrorEventArgs erg ) { 
+									Debug.Log("Developer callback onInterstitialAdLoadFail :" + erg.placementId
+								+ "--erg.code:" + code + "--msg:" + erg.message); 
+								} 
+								//广告展示成功 
+								public void onShow(object sender,ATAdEventArgs erg) {
+									Debug.Log("Developer callback onInterstitialAdShow :" +erg. placementId); 
+								} 
+								//广告视频开始播放，部分平台有此回调 
+								public void startVideoPlayback(object sender,ATAdEventArgs erg) {
+									Debug.Log("Developer callback onInterstitialAdStartPlayingVideo :" + erg.placementId); 
+								} 
+								//广告展示失败
+								public void failVideoPlayback(object sender,ATAdEventArgs erg) { 
+									Debug.Log("Developer callback onInterstitialAdFailedToShow :" + erg.placementId); 
+								}
+							</code>
 						</article>
 					</div>
 					<script>
