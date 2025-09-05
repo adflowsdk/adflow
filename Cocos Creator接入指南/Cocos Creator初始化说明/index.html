@@ -570,33 +570,7 @@ if (palette && palette.color) {
 							<p>
 								3.通过setDebugLog方法，可以开启调试日志，方便定位SDK集成中遇到的问题
 							</p>
-							<p>
-								4.在需要展示插屏广告和激励广告的场景内添加返回按键处理，参考下面代码：
-							</p>
-							<pre>
-								<code>
-									extends: cc.Component, onLoad() { 
-										// 监听按键事件 
-										cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this); 
-									}, onKeyDown(event) { 
-									if (event.keyCode === cc.macro.KEY.back)
-									{ 
-										if(mShowing){ 
-										//此处需要添加发送广播的行为，广播的action分别为："com.adflow.adflowsdk.interstitial.back"，"com.adflow.adflowsdk.reward.back"
-											event.preventDefault(); 
-										// 阻止默认行为 
-										} console.log(&quot;返回键被按下，但已被屏蔽&quot;);
-										// 你可以在这里添加自定义逻辑，比如弹出退出确认对话框 
-									} 
-									}, onDestroy() { 
-										// 移除事件监听 
-										cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this); 
-									}
-								</code>
-							</pre>
-							<p>
-								此处的mShowing是判断当前正在展示广告，展示广告期间，屏蔽返回按键，避免返回操作直接关闭当前正在展示的广告。可以在该场景内监听函数内的onInterstitialAdShow/onRewardedVideoAdPlayStart接口内设置mShowing为true，在onInterstitialAdClose/onRewardedVideoAdClosed接口内设置mShowing为false。详情请查看激励视频广告/插屏广告
-							</p>
+							 
 						</article>
 					</div>
 					<script>
