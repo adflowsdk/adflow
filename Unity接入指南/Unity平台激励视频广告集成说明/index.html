@@ -619,48 +619,47 @@ if (palette && palette.color) {
 								</strong>
 								）
 							</p>
-							<p>
-								``` //广告加载成功 public void onAdLoad(object sender,ATAdEventArgs erg) { Debug.Log("Developer
-								callback onAdLoad :" + erg.placementId); } //广告加载失败 public void onAdLoadFail(object
-								sender,ATAdErrorEventArgs erg ) { Debug.Log("Developer callback onAdLoadFail
-								:" + erg.placementId + "--erg.code:" + code + "--msg:" + erg.message);
+							<code>
+								//广告加载成功 
+								public void onAdLoad(object sender,ATAdEventArgs erg) { 
+								Debug.Log("Developer callback onAdLoad :" + erg.placementId); 
+								} 
+								//广告加载失败 public void onAdLoadFail(object sender,ATAdErrorEventArgs erg ) {
+									Debug.Log("Developer callback onAdLoadFail :" + erg.placementId + "--erg.code:" + code + "--msg:" + erg.message);
 								}
-							</p>
-							<p>
-								public void onAdVideoStartEvent(object sender, ATAdEventArgs erg) { Debug.Log("Developer
-								onAdVideoStartEvent------" + "-&gt;" + JsonMapper.ToJson(erg.callbackInfo.toDictionary()));
+							</code>
+							<code>
+								public void onAdVideoStartEvent(object sender, ATAdEventArgs erg) {
+									Debug.Log("Developer onAdVideoStartEvent------" + "-&gt;" + JsonMapper.ToJson(erg.callbackInfo.toDictionary()));
 								}
-							</p>
-							<p>
-								public void onAdVideoEndEvent(object sender, ATAdEventArgs erg) { Debug.Log("Developer
-								onAdVideoEndEvent------" + "-&gt;" + JsonMapper.ToJson(erg.callbackInfo.toDictionary()));
+							</code>
+							<code>
+								public void onAdVideoEndEvent(object sender, ATAdEventArgs erg) {
+									Debug.Log("Developer onAdVideoEndEvent------" + "-&gt;" + JsonMapper.ToJson(erg.callbackInfo.toDictionary()));
 								}
-							</p>
-							<p>
+							</code>
+							<code>
 								public void onAdVideoPlayFail(object sender, ATAdErrorEventArgs erg) {
-								Debug.Log("Developer onAdVideoClosedEvent------" + "-&gt;" + JsonMapper.ToJson(erg.errorMessage));
+									Debug.Log("Developer onAdVideoClosedEvent------" + "-&gt;" + JsonMapper.ToJson(erg.errorMessage));
 								}
-							</p>
-							<p>
-								//sender 为广告类型对象，erg为返回信息 //广告被点击 public void onAdClick(object sender,ATAdEventArgs
-								erg) { Debug.Log("Developer callback onAdClick :" + erg.placementId); }
-							</p>
-							<p>
-								public void onReward(object sender, ATAdEventArgs erg) { Debug.Log("Developer
-								onReward------" + "-&gt;" + JsonMapper.ToJson(erg.callbackInfo.toDictionary()));
+							</code>
+							<code>
+								//sender 为广告类型对象，erg为返回信息 
+								//广告被点击 
+								public void onAdClick(object sender,ATAdEventArgs erg) { 
+									Debug.Log("Developer callback onAdClick :" + erg.placementId);
 								}
-							</p>
-							<p>
-								public void onAdVideoClosedEvent(object sender, ATAdEventArgs erg) { Debug.Log("Developer
-								onAdVideoClosedEvent------" + "-&gt;" + JsonMapper.ToJson(erg.callbackInfo.toDictionary()));
+							</code>
+							<code>
+								public void onReward(object sender, ATAdEventArgs erg) { 
+								Debug.Log("Developer onReward------" + "-&gt;" + JsonMapper.ToJson(erg.callbackInfo.toDictionary()));
 								}
-							</p>
-							<p>
-								```
-							</p>
-							<p>
-								Note: 需要处理返回按键，具体代码请参考初始化说明文档部分
-							</p>
+							</code>
+							<code>
+								public void onAdVideoClosedEvent(object sender, ATAdEventArgs erg) { 
+									Debug.Log("Developer onAdVideoClosedEvent------" + "-&gt;" + JsonMapper.ToJson(erg.callbackInfo.toDictionary()));
+								}
+							</code>
 						</article>
 					</div>
 					<script>
