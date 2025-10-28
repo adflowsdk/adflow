@@ -582,9 +582,30 @@ if (palette && palette.color) {
 							</ol>
 							<h2>二.最新版本说明</h2>
 							<ol>
-								<li>andythink:6.4.87最新版本：通过implementation("com.github.adflowsdk:adflowtp:6.4.87.06")引入</li>
-								<li>thinkup:6.4.87最新版本:通过implementation("com.github.adflowsdk:adflowtptu:6.4.87.06")引入</li>
-								<li>thinkup:6.5.10最新版本:通过implementation("com.github.adflowsdk:adflowtptu:6.5.10.06")引入</li>
+								<li>andythink:6.4.87最新版本：请联系客服</li>
+								<li>thinkup:6.4.87最新版本:通过implementation("com.adflow.sdk:adflowtptu:6.4.87.19")引入</li>
+								<li>thinkup:6.5.16最新版本:通过implementation("com.adflow.sdk:adflowtptu:6.5.16.19")引入</li>
+							</ol>
+							<h2>三.下载地址</h2>
+							<ol>
+								<li>需要在项目级别的build.gradle文件里面添加以下配置：
+									<code>
+										allprojects {
+										    repositories {
+										        mavenCentral()
+										        google()
+										        maven {
+										            url "https://download.adflowmobi.top/repository/adflowtptu/"
+										            // 可选：如果仓库需要认证. username和password请找客服获取
+										            credentials {
+										                username = "username"
+										                password = "password"
+										            }
+										        }
+										    }
+										}
+									</code> 
+								</li>
 							</ol>
 						</article>
 					</div>
